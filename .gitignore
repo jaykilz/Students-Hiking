@@ -1,1 +1,28 @@
+# Maven output
+/target/
 
+# Eclipse & NetBeans project files
+nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Compiled class files
+*.class
+
+# Logs
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE config
+.idea/
+*.iml
+
+# Backup / temp
+*.swp
+*.bak
+*.tmp
