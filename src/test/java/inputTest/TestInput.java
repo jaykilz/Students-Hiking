@@ -25,5 +25,14 @@ public class TestInput {
 
         stu.setPhoneNumber(input.studentPhone("Enter student's phone numbers:"));
         System.out.println("" + stu.getPhoneNumber());
+
+        stu.setEmail(input.studentEmail("Enter student's email: "));
+        System.out.println("" + stu.getEmail());
+
+        stu.setMountCode(input.studentMountCode("Enter mount code:"));
+        System.out.println("" + stu.getMountCode());
+
+        stu.setFee(input.fee(stu.getPhoneNumber()));
+        System.out.println("" + stu.getFee());
     }
 }

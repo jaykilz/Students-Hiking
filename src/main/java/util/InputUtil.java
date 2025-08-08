@@ -100,4 +100,44 @@ public class InputUtil {
         }
     }
 
+    public String studentEmail(String mes) {
+        String str;
+
+        while (true) {
+            System.out.println("" + mes);
+            str = sc.nextLine();
+            sc.nextLine();
+
+            if (str.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+                return str;
+            } else {
+                System.out.println("Invalid email. Enter again.");
+            }
+        }
+    }
+
+    public String studentMountCode(String mes) {
+        String str;
+        while (true) {
+            System.out.println("" + mes);
+            str = sc.nextLine();
+            sc.nextLine();
+
+            if (str.matches("(1|2|3|4|5|6|7)")) {
+                return str;
+            } else {
+                System.out.println("Invalid Mountain Code.");
+            }
+        }
+    }
+
+    public double fee(String phone) {
+        NetworkOperater check = new NetworkOperater();
+
+        if (check.isViettelOrVnpt(phone)) {
+            return 6000000 * 0.65;
+        } else {
+            return 6000000;
+        }
+    }
 }
