@@ -54,7 +54,7 @@ public class InputUtil {
                 System.out.println("ID must have 8 characters.");
             } else if (!str.matches("(SE|HE|DE|QE|CE)\\d{6}")) {
                 System.out.println("ID must start with SE, HE, DE, QE, CE and contain 6 numbers.");
-            } // if xu li id da co
+            } // id trung
             else {
                 return str;
             }

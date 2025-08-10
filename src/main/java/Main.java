@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
+import controller.Control;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,8 @@ public class Main {
     public static void main(String[] args) {
         int choice;
         Scanner sc = new Scanner(System.in);
+        Control ctr = new Control();
+
         do {
             System.out.println("================| Menu |================");
             System.out.println("1. New registration");
@@ -32,7 +35,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("add");
+                    ctr.add();
                     break;
                 case 2:
                     System.out.println("update");
@@ -56,7 +59,7 @@ public class Main {
                     System.out.println("save");
                     break;
                 case 9:
-                    System.out.println("close");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("ERROR");
