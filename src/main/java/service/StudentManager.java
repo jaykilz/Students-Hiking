@@ -12,6 +12,7 @@ import util.InputUtil;
 import util.Print;
 import util.Recevie;
 import util.SearchUtil;
+import util.ValidateData;
 
 /**
  *
@@ -21,6 +22,11 @@ public class StudentManager {
 
     private List<Student> students = new ArrayList<>();
     FileStu file = new FileStu();
+
+    SearchUtil sr = new SearchUtil();
+    UpdateStatus up = new UpdateStatus();
+    Recevie rv = new Recevie();
+    Print p = new Print();
 
     public StudentManager() {
         try {
@@ -47,12 +53,14 @@ public class StudentManager {
 
     public void changeInfoStu(Student updateStudent) {
 
-        SearchUtil sr = new SearchUtil();
-        UpdateStatus up = new UpdateStatus();
-        Recevie rv = new Recevie();
-        Print p = new Print();
+        String targetId;
+        while (true) {
+            targetId = rv.receiveString("Enter student's ID needing to change: ");
 
-        String targetId = rv.receiveString("Enter student's ID needing to change: ");
+            if (up.checkIdForUpdate(targetId, students)) {
+                break;
+            }
+        }
 
         if (sr.hasId(targetId, students)) {
             updateStudent = sr.searchById(targetId, students);
@@ -76,7 +84,7 @@ public class StudentManager {
                 updateStudent.setMountCode(newMount);
             }
 
-            students.set(students.indexOf(updateStudent), updateStudent);
+            students.set(students.indexOf(updateStudent), updateStudent); // ghi de vao array list
             file.saveFile(students);
             System.out.println("Update successfully.");
 
@@ -91,6 +99,34 @@ public class StudentManager {
             System.out.println("No students have registered yet.");
         } else {
             p.printStudent(students);
+        }
+    }
+
+    public void deleteStudent(Student deleteStudent) {
+        String targetId;
+        while (true) {
+            targetId = rv.receiveString("Enter student's ID needing to delete: ");
+
+            if (up.checkIdForUpdate(targetId, students)) {
+                break;
+            }
+        }
+        if (sr.hasId(targetId, students)) {
+
+            deleteStudent = sr.searchById(targetId, students);
+            p.printSingle(deleteStudent);
+
+            while (true) {
+                String choice = rv.receiveString("Are you sure you want to delete this registration? (Y/N): ");
+                if (choice.matches("Y|y")) {
+                    students.remove(students.indexOf(deleteStudent));
+                    System.out.println("Delete successfully.");
+                    break;
+                } else if (choice.matches("N|n")) {
+                    System.out.println("Delete unsuccessfully.");
+                    break;
+                }
+            }
         }
     }
 

@@ -94,4 +94,19 @@ public class ValidateData {
             return false;
         }
     }
+
+    public boolean validateIdInList(String id, List<Student> list) {
+        SearchUtil sr = new SearchUtil();
+        if (id.length() != 8) {
+            System.out.println("ID must have 8 characters.");
+            return false;
+
+        } else if (!id.matches("(SE|HE|DE|QE|CE)\\d{6}")) {
+            System.out.println("ID must start with SE, HE, DE, QE, CE and contain 6 numbers.");
+            return false;
+
+        } else {
+            return true;
+        }
+    }
 }

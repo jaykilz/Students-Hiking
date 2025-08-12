@@ -4,8 +4,10 @@
  */
 package service;
 
+import java.util.List;
 import java.util.Scanner;
 import util.ValidateData;
+import model.Student;
 
 /**
  *
@@ -18,6 +20,10 @@ public class UpdateStatus {
 
     public UpdateStatus() {
 
+    }
+
+    public boolean checkIdForUpdate(String targetId, List<Student> list) {
+        return vld.validateIdInList(targetId, list);
     }
 
     public String updateName(String mes) {

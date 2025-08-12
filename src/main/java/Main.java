@@ -43,7 +43,7 @@ public class Main {
                     ctr.display();
                     break;
                 case 4:
-                    System.out.println("delete");
+                    ctr.delete();
                     break;
                 case 5:
                     System.out.println("search");

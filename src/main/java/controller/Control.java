@@ -32,4 +32,9 @@ public class Control {
     public void display() {
         students.displayAll();
     }
+
+    public void delete() {
+        Student s = new Student();
+        students.deleteStudent(s);
+    }
 }
