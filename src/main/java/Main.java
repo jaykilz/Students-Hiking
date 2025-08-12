@@ -46,7 +46,7 @@ public class Main {
                     ctr.delete();
                     break;
                 case 5:
-                    System.out.println("search");
+                    ctr.searchNames();
                     break;
                 case 6:
                     System.out.println("filter");

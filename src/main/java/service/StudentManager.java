@@ -120,6 +120,7 @@ public class StudentManager {
                 String choice = rv.receiveString("Are you sure you want to delete this registration? (Y/N): ");
                 if (choice.matches("Y|y")) {
                     students.remove(students.indexOf(deleteStudent));
+                    file.saveFile(students);
                     System.out.println("Delete successfully.");
                     break;
                 } else if (choice.matches("N|n")) {
@@ -128,6 +129,19 @@ public class StudentManager {
                 }
             }
         }
+    }
+
+    public void searchName() {
+        String findName = rv.receiveString("Enter student's name to find: ");
+
+        List<Student> studentsFound = sr.searchByName(findName, students);
+
+        if (studentsFound.isEmpty()) {
+            System.out.println("No one matches the search criteria!");
+        } else {
+            p.printStudent(studentsFound);
+        }
+
     }
 
     public List<Student> getStudents() {

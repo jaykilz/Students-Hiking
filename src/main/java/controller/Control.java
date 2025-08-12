@@ -37,4 +37,8 @@ public class Control {
         Student s = new Student();
         students.deleteStudent(s);
     }
+
+    public void searchNames() {
+        students.searchName();
+    }
 }
