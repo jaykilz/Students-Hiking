@@ -4,21 +4,27 @@
  */
 package util;
 
+import java.io.BufferedWriter;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Student;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 /**
  *
  * @author ALPS
  */
-public class File {
+public class FileStu {
 
-    public File() {
+    public FileStu() {
 
     }
 
@@ -47,24 +53,42 @@ public class File {
 
                 list.add(new Student(id, name, phoneNumber, email, mountCode, fee));
             }
+
         } catch (IOException e) {
             System.out.println("Can't open file " + e.getMessage());
-            System.exit(-1);
-
         }
 
         return list;
     }
 
     public void saveFile(List<Student> students) {
-        try ( FileWriter writer = new FileWriter("data/Students.csv")) {
-            for (Student s : students) {
-                writer.write(s.getId() + "," + s.getName() + "," + s.getPhoneNumber() + "," + s.getEmail() + "," + s.getMountCode() + "," + s.getFee() + "\n");
+        try {
+            File dir = new File("data");
+            if (!dir.exists()) {
+                dir.mkdirs();
             }
-            System.out.println("Save successfully in Students.csv");
+
+            try ( BufferedWriter bw = new BufferedWriter(new FileWriter("data/temp.csv"))) {
+
+                for (Student s : students) {
+                    bw.write(s.getId() + "," + s.getName() + "," + s.getPhoneNumber() + "," + s.getEmail() + "," + s.getMountCode() + "," + s.getFee() + "\n");
+                }
+            }
+
         } catch (IOException e) {
-            System.out.println("Can't save into file " + e.getMessage());
-            System.exit(-1);
+            System.out.println("Can't write into temp file: " + e.getMessage());
         }
+
+        File temp = new File("data/temp.csv");
+        File rename = new File("data/Students.csv");
+
+        boolean flag = temp.renameTo(rename);
+
+        if (flag) {
+            System.out.println("Save successfully in Students.csv.");
+        } else {
+            System.out.println("Can't save file.");
+        }
+
     }
 }

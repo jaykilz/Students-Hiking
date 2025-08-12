@@ -30,6 +30,18 @@ public class SearchUtil {
 
     }
 
+    public boolean hasId(String targetId, List<Student> list) {
+
+        for (Student stu : list) {
+            if (stu.getId().equals(targetId)) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
     public List<Student> searchByName(String targetName, List<Student> list) {
         String[] nameCheck;
         List<Student> studentsFound = new ArrayList<>();

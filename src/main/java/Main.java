@@ -4,7 +4,7 @@
  */
 
 import controller.Control;
-import java.util.Scanner;
+import util.InputUtil;
 
 /**
  *
@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         int choice;
-        Scanner sc = new Scanner(System.in);
+        InputUtil input = new InputUtil();
         Control ctr = new Control();
 
         do {
@@ -30,8 +30,7 @@ public class Main {
             System.out.println("9. Exit the program");
             System.out.println("==========================================");
 
-            System.out.println("Enter your choice: ");
-            choice = sc.nextInt();
+            choice = input.intInput("Enter your choice: ");
 
             switch (choice) {
                 case 1:

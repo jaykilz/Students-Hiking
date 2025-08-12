@@ -5,7 +5,9 @@
 package util;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import model.Student;
 
 /**
  *
@@ -14,14 +16,14 @@ import java.util.Scanner;
 public class InputUtil {
 
     Scanner sc = new Scanner(System.in);
+    ValidateData vld = new ValidateData();
 
     public InputUtil() {
 
     }
 
-    public int intInput(String mes, int min, int max) {
+    public int intInput(String mes) {
         int number = -1;
-
         while (true) {
             try {
 
@@ -29,11 +31,10 @@ public class InputUtil {
                 number = sc.nextInt();
                 sc.nextLine();
 
-                if (number < min || number > max) {
-                    System.out.println("PLEASE ENTER A CHOICE (1 - 9).");
-                } else {
+                if (vld.validateChoice(number, 1, 9)) {
                     break;
                 }
+
             } catch (InputMismatchException e) {
                 System.out.println("PLEASE ENTER AN INTEGER NUMBER.");
                 sc.nextLine();
@@ -43,22 +44,16 @@ public class InputUtil {
 
     }
 
-    public String studentIdInput(String mes) {
-        String str;
+    public String studentIdInput(String mes, List<Student> list) {
+        String id;
 
         while (true) {
             System.out.println("" + mes);
-            str = sc.nextLine();
+            id = sc.nextLine();
 
-            if (str.length() != 8) {
-                System.out.println("ID must have 8 characters.");
-            } else if (!str.matches("(SE|HE|DE|QE|CE)\\d{6}")) {
-                System.out.println("ID must start with SE, HE, DE, QE, CE and contain 6 numbers.");
-            } // id trung
-            else {
-                return str;
+            if (vld.validateId(id, list)) {
+                return id;
             }
-
         }
     }
 
@@ -83,18 +78,13 @@ public class InputUtil {
 
     public String studentPhone(String mes) {
         String phone;
-        NetworkOperater check = new NetworkOperater();
 
         while (true) {
             System.out.println("" + mes);
             phone = sc.nextLine();
             sc.nextLine();
 
-            if (phone.length() != 10) {
-                System.out.println("Phone numbers must contain 10 numbers.");
-            } else if (!check.isVnNetwork(phone)) {
-                System.out.println("Invalid phone numbers.");
-            } else {
+            if (vld.validatePhone(phone)) {
                 return phone;
             }
         }
@@ -108,10 +98,8 @@ public class InputUtil {
             str = sc.nextLine();
             sc.nextLine();
 
-            if (str.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            if (vld.validateEmail(str)) {
                 return str;
-            } else {
-                System.out.println("Invalid email. Enter again.");
             }
         }
     }
@@ -123,11 +111,10 @@ public class InputUtil {
             str = sc.nextLine();
             sc.nextLine();
 
-            if (str.matches("(1|2|3|4|5|6|7)")) {
+            if (vld.validateMountCode(str)) {
                 return str;
-            } else {
-                System.out.println("Invalid Mountain Code.");
             }
+
         }
     }
 
