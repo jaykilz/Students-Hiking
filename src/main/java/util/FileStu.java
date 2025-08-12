@@ -81,13 +81,17 @@ public class FileStu {
 
         File temp = new File("data/temp.csv");
         File rename = new File("data/Students.csv");
-
+        if (rename.exists()) {
+            rename.delete();
+        }
         boolean flag = temp.renameTo(rename);
 
         if (flag) {
             System.out.println("Save successfully in Students.csv.");
+
         } else {
             System.out.println("Can't save file.");
+
         }
 
     }

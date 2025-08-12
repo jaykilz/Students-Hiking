@@ -22,10 +22,14 @@ public class Control {
     public void add() {
         Student s = new Student();
         students.addNewStudent(s);
-
     }
 
     public void update() {
+        Student updateStudent = new Student();
+        students.changeInfoStu(updateStudent);
+    }
 
+    public void display() {
+        students.displayAll();
     }
 }

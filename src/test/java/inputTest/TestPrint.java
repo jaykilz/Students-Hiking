@@ -4,8 +4,10 @@
  */
 package inputTest;
 
-import model.Student;
-import util.Print;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 
 /**
  *
@@ -14,15 +16,17 @@ import util.Print;
 public class TestPrint {
 
     public static void main(String[] args) {
-        Student s = new Student();
-        s.setId("SE204952");
-        s.setName("Duy Khiem");
-        s.setEmail("laiduykhanh@gmail.com");
-        s.setMountCode("3");
-        s.setPhoneNumber("0783290702");
-        s.setFee(6000000);
+        try ( RandomAccessFile raf = new RandomAccessFile("data/students.csv", "rw");  FileChannel channel = raf.getChannel();  FileLock lock = channel.tryLock()) {
 
-        Print p = new Print();
-        p.printSingle(s);
+            if (lock != null) {
+                // Thao tác với file
+                System.out.println("Đã lock file");
+            } else {
+                System.out.println("File đang được dùng bởi chương trình khác");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

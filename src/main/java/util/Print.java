@@ -18,24 +18,25 @@ public class Print {
     }
 
     public void printStudent(List<Student> list) {
-        System.out.println("--------------------------------------------------------------------");
-        System.out.printf("%-12s | %-20s | %-12s | %-12s | %-12s", "Student ID", "Name", "Phone", "Peak Code", "Fee");
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------");
+        System.out.printf("%-12s | %-20s | %-12s | %-12s | %-12s%n", "Student ID", "Name", "Phone", "Peak Code", "Fee");
+        System.out.println("----------------------------------------------------------------------------------");
         for (Student s : list) {
-            System.out.printf("%-12s | %-20s | %-12s | %-12s | %-12s", s.getId(), s.getName(), s.getPhoneNumber(), s.getMountCode(), s.getFee());
+            System.out.printf("%-12s | %-20s | %-12s | %-12s | %-12s%n", s.getId(), s.getName(), s.getPhoneNumber(), s.getMountCode(), s.getFee());
         }
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------");
 
     }
 
     public void printSingle(Student s) {
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------");
+
         System.out.printf("%-12s : %s", "Student ID", s.getId());
         System.out.printf("%n%-12s : %s", "Name", s.getName());
         System.out.printf("%n%-12s : %s", "Phone", s.getPhoneNumber());
         System.out.printf("%n%-12s : %s", "Mountain ", s.getMountCode());
         System.out.printf("%n%-12s : %.2f%n", "Fee ", s.getFee());
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------");
 
     }
 }
