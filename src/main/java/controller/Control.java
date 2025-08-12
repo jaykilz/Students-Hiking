@@ -41,4 +41,8 @@ public class Control {
     public void searchNames() {
         students.searchName();
     }
+
+    public void filterCampus() {
+        students.filterCampus();
+    }
 }

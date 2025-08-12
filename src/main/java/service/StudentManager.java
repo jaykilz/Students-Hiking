@@ -144,6 +144,25 @@ public class StudentManager {
 
     }
 
+    public void filterCampus() {
+        String campus;
+        while (true) {
+            campus = rv.receiveString("Enter code of campus (e.g., CE, DE, HE, SE, QE) :");
+            if (campus.matches("CE|DE|HE|SE|QE")) {
+                break;
+            }
+        }
+
+        List<Student> sameCampus = sr.filterCampus(campus, students);
+
+        if (sameCampus.isEmpty()) {
+            System.out.println("No students have registered under this campus.");
+        } else {
+            p.printStudent(sameCampus);
+        }
+
+    }
+
     public List<Student> getStudents() {
         return students;
     }

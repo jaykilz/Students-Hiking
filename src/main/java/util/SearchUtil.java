@@ -66,4 +66,17 @@ public class SearchUtil {
         return studentsFound;
 
     }
+
+    public List<Student> filterCampus(String campus, List<Student> list) {
+        List<Student> sameCampusStudnets = new ArrayList<>();
+        boolean campusCheck;
+        for (Student s : list) {
+            campusCheck = s.getId().startsWith(campus);
+
+            if (campusCheck) {
+                sameCampusStudnets.add(s);
+            }
+        }
+        return sameCampusStudnets;
+    }
 }

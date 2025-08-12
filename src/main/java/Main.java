@@ -49,7 +49,7 @@ public class Main {
                     ctr.searchNames();
                     break;
                 case 6:
-                    System.out.println("filter");
+                    ctr.filterCampus();
                     break;
                 case 7:
                     System.out.println("statistic");
