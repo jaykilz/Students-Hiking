@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 import model.Student;
 import util.FileStu;
-import util.InputUtil;
 import util.Print;
 import util.Recevie;
 import util.SearchUtil;
@@ -31,7 +30,7 @@ public class StudentManager {
 
     public StudentManager() {
         try {
-            students = file.fileStuReader("data/Students.csv");
+            students = file.fileDatReader("data/registration.dat");
             Collections.sort(students, Comparator.comparing(Student::getId));
 
         } catch (Exception e) {
@@ -52,7 +51,6 @@ public class StudentManager {
 
         students.add(s);
         Collections.sort(students, Comparator.comparing(Student::getId));
-        file.saveFile(students);
     }
 
     public void changeInfoStu(Student updateStudent) {
@@ -89,7 +87,6 @@ public class StudentManager {
             }
 
             students.set(students.indexOf(updateStudent), updateStudent); // ghi de vao array list
-            file.saveFile(students);
             System.out.println("Update successfully.");
 
         } else {
@@ -124,7 +121,6 @@ public class StudentManager {
                 String choice = rv.receiveString("Are you sure you want to delete this registration? (Y/N): ");
                 if (choice.matches("Y|y")) {
                     students.remove(students.indexOf(deleteStudent));
-                    file.saveFile(students);
                     System.out.println("Delete successfully.");
                     break;
                 } else if (choice.matches("N|n")) {
@@ -170,6 +166,10 @@ public class StudentManager {
     public void statistic() {
         StatisticRegistration st = new StatisticRegistration();
         p.printStatstic(st.makeMountList(students));
+    }
+
+    public void saveData() {
+        file.saveDatFile(students);
     }
 
     public List<Student> getStudents() {

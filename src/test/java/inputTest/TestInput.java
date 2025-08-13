@@ -5,7 +5,7 @@
 package inputTest;
 
 import model.Student;
-import util.InputUtil;
+import service.InputUtil;
 import controller.Control;
 
 /**

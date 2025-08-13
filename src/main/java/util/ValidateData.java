@@ -4,6 +4,7 @@
  */
 package util;
 
+import service.NetworkOperater;
 import java.util.List;
 import java.util.Scanner;
 import model.Student;

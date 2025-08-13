@@ -4,7 +4,7 @@
  */
 
 import controller.Control;
-import util.InputUtil;
+import service.InputUtil;
 
 /**
  *
@@ -55,10 +55,10 @@ public class Main {
                     ctr.statistic();
                     break;
                 case 8:
-                    System.out.println("save");
+                    ctr.save();
                     break;
                 case 9:
-                    System.exit(0);
+                    ctr.exit();
                     break;
                 default:
                     System.out.println("ERROR");
