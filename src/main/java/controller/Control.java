@@ -45,4 +45,8 @@ public class Control {
     public void filterCampus() {
         students.filterCampus();
     }
+
+    public void statistic() {
+        students.statistic();
+    }
 }

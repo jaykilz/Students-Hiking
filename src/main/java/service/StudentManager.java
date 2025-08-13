@@ -5,6 +5,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import model.Student;
 import util.FileStu;
@@ -12,7 +13,7 @@ import util.InputUtil;
 import util.Print;
 import util.Recevie;
 import util.SearchUtil;
-import util.ValidateData;
+import java.util.Comparator;
 
 /**
  *
@@ -31,6 +32,8 @@ public class StudentManager {
     public StudentManager() {
         try {
             students = file.fileStuReader("data/Students.csv");
+            Collections.sort(students, Comparator.comparing(Student::getId));
+
         } catch (Exception e) {
             System.out.println("Errors.");
         }
@@ -48,6 +51,7 @@ public class StudentManager {
         s.setFee(input.fee(s.getPhoneNumber()));
 
         students.add(s);
+        Collections.sort(students, Comparator.comparing(Student::getId));
         file.saveFile(students);
     }
 
@@ -161,6 +165,11 @@ public class StudentManager {
             p.printStudent(sameCampus);
         }
 
+    }
+
+    public void statistic() {
+        StatisticRegistration st = new StatisticRegistration();
+        p.printStatstic(st.makeMountList(students));
     }
 
     public List<Student> getStudents() {

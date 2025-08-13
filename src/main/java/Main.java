@@ -52,7 +52,7 @@ public class Main {
                     ctr.filterCampus();
                     break;
                 case 7:
-                    System.out.println("statistic");
+                    ctr.statistic();
                     break;
                 case 8:
                     System.out.println("save");

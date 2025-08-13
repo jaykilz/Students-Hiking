@@ -87,7 +87,7 @@ public class ValidateData {
     }
 
     public boolean validateMountCode(String code) {
-        if (code.matches("(1|2|3|4|5|6|7)")) {
+        if (code.matches("(MT01|MT02|MT03|MT04|MT05|MT06|MT07)")) {
             return true;
         } else {
             System.out.println("Invalid Mountain Code.");
