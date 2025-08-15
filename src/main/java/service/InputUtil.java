@@ -30,7 +30,7 @@ public class InputUtil {
 
                 System.out.println("" + mes);
                 number = sc.nextInt();
-                sc.nextLine();
+                //sc.nextLine();
 
                 if (vld.validateChoice(number, 1, 9)) {
                     break;
@@ -64,7 +64,7 @@ public class InputUtil {
         while (true) {
             System.out.println("" + mes);
             str = sc.nextLine();
-            sc.nextLine();
+            //sc.nextLine();
 
             if (str.isEmpty()) {
                 System.out.println("Name must be entered.");
@@ -83,7 +83,7 @@ public class InputUtil {
         while (true) {
             System.out.println("" + mes);
             phone = sc.nextLine();
-            sc.nextLine();
+            //sc.nextLine();
 
             if (vld.validatePhone(phone)) {
                 return phone;
@@ -97,7 +97,7 @@ public class InputUtil {
         while (true) {
             System.out.println("" + mes);
             str = sc.nextLine();
-            sc.nextLine();
+            //sc.nextLine();
 
             if (vld.validateEmail(str)) {
                 return str;
@@ -110,7 +110,7 @@ public class InputUtil {
         while (true) {
             System.out.println("" + mes);
             str = sc.nextLine();
-            sc.nextLine();
+            //sc.nextLine();
 
             if (vld.validateMountCode(str)) {
                 return str;

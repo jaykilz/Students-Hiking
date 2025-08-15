@@ -43,7 +43,7 @@ public class Print {
 
     public void printStatstic(List<Mountain> list) {
         System.out.println("----------------------------------------------------------------------------------");
-        System.out.printf("%-12s | %-36s | %-20s%n", "Peak Name", "Numbers of Participants", "Total Cost");
+        System.out.printf("%-12s | %-40s | %-12s%n", "Peak Name", "Numbers of Participants", "Total Cost");
         System.out.println("----------------------------------------------------------------------------------");
         for (Mountain m : list) {
             System.out.printf("%-12s | %-40s | %-12.0f%n", m.getMountCode(), m.getNumberOfRegistraters(), m.getSumOfFee());
