@@ -45,8 +45,8 @@ public class StatisticRegistration {
                 mountainList.add(newMountain);
             } else {
                 // cap nhap neu ton tai
-                existingMountain.increseNumberOfRegistraters(1);
-                existingMountain.increseSumOfFee(s.getFee());
+                existingMountain.increaseNumberOfRegistraters(1);
+                existingMountain.increaseSumOfFee(s.getFee());
             }
         }
         Collections.sort(mountainList, Comparator.comparing(Mountain::getMountCode));

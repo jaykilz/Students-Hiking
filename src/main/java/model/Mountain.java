@@ -42,11 +42,11 @@ public class Mountain {
         this.sumOfFee = sumOfFee;
     }
 
-    public void increseNumberOfRegistraters(long numberOfRegistraters) {
+    public void increaseNumberOfRegistraters(long numberOfRegistraters) {
         this.numberOfRegistraters += numberOfRegistraters;
     }
 
-    public void increseSumOfFee(Double sumOfFee) {
+    public void increaseSumOfFee(Double sumOfFee) {
         this.sumOfFee += sumOfFee;
     }
 }
